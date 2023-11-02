@@ -95,17 +95,17 @@ console.log(Novel.isPrototypeOf(Biography));
 // Створюємо ScienceBook, наслідуємо властивості і функції від об'єкта Book
 const ScienceBook = Object.create(Book);
 
-Object.defineProperty(ScienceBook,'info', {
+Object.defineProperty(ScienceBook,'_info', {
     configurable: false,
     writable: true, 
 });
 
-Object.defineProperty(ScienceBook,'_info', {
+Object.defineProperty(ScienceBook,'info', {
     set(value) {
-        this.info = value;
+        this._info = value;
       },
     get() {
-        return `Про книгу ${this.title}: ${this.info}`;
+        return `Про книгу ${this.title}: ${this._info}`;
       },
     
 });
@@ -132,7 +132,7 @@ console.log("Завдання: 4 ==============================");
 // Виводимо в консоль властивість info
 console.log(ScienceBook.info);
 // Виводимо в консоль налаштування властивости info
-console.log(Object.getOwnPropertyDescriptor(ScienceBook, '_info'));
+console.log(Object.getOwnPropertyDescriptor(ScienceBook, 'info'));
 // 5. Поліморфізм: створення нового об'єкта та перевизначення його методу
 /*
  * Об'єкт: Textbook
